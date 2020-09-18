@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+    #wrapper{
+        width:700px;
+        height:700px;
+        background:orange;
+        margin:auto;
+        position:relative;
+    }
+</style>
+<script>
+    //문서가 로드되면 초기화할 작업을 아래의 init 함수에서 처리해보자
+    var box;    //문서내의 div박스를 담아놓을 전역변수
+    var x=0;        //박스의 x좌표를 결정하는 전역변수
+    var y=100;    //박스의 y 좌표를 결정하는 전역변수
+    var stx=11;
+    var sty=17;
+    function init(){
+        box=document.getElementById("box");     //전역변수에 보관
+        //박스의 스타일을 css에서가 아니라 js프로그래밍으로 처리한다
+        //효과적으로는 달라질게 없으나 css를 프로그램으로 제어할 수 있다
+        box.style.width=50+"px";
+        box.style.height=50+"px";
+        box.style.background="red";
+        box.style.position="absolute";
+        box.style.left=x+"px";
+        box.style.top=y+"px";
+    }
+
+    //클릭할때마다 수동으로 box의 left, top을 변경시켜 나가보자
+    function move(){
+        x=x+stx;
+        y=y+sty;
+        
+        box.style.left=x+"px";
+        box.style.top=y+"px";
+        
+        stx=(x<=0 || x>=650)? -stx: stx ;
+        sty=(y<=0 || y>=650)? -sty: sty ;
+    }
+
+    function auto(){
+        setInterval("move()", 10);
+    }
+
+</script>
+</head>
+<body onLoad="init()">
+    <div id="wrapper">
+        <button onClick="move()">수동</button>
+        <button onClick="auto()">자동</button>
+        <div id="box"></div>
+    </div>
+</body>
+</html>

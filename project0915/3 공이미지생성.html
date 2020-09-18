@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5번마다1번씩</title>
+<script>
+var count=0;        //전역변수  :   숫자가 누적될 수 있도록 하기위함
+function createBall(){
+    count++;
+    console.log("count is", count);
+    var ball=document.createElement("img");         // <img/> 작성
+    
+
+    /* 1. 조건문
+    if(count%5!=0){
+        ball.src="../images/ball1.png";                         // <img src=""/> 작성
+    }else{
+        ball.src="../images/ball2.png";                         // <img src=""/> 작성
+    }
+    */
+
+    //2. 흑백논리를 처리할때는 삼항연산자로도 가능
+    ball.src=(count%5==0)? "../images/ball2.png":"../images/ball1.png";
+
+
+
+    ball.style.width=100+"px";
+    //body에 부착
+    document.body.appendChild(ball);                    // body에 ball 추가!
+
+
+}
+</script>
+</head>
+<body>
+    <button onClick="createBall()">공 생성</button>
+</body>
+</html>

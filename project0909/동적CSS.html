@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+ 
+    #wrapper{
+        width:800px;
+        height:600px;
+        margin:auto;
+    }
+    #control{
+        width:200px;
+        height:100%;
+        background:orange;    
+        float:left;
+    }
+    #result{
+        width:600px;
+        height:100%;
+        background:rgb(44, 100, 18);
+        float:left;
+    }
+    #pic{
+        width:100px;
+        height:100px;
+        transform:scaleX(1);
+        transform:rotate(40deg);
+        border : 1px dotted red;
+    }
+</style>
+<script>
+    // 여기 영역은 html이 아닌 프로그래밍 영역
+    // 이 영역이 수행되는 시점은? 브라우저 실행할때
+    var w=0;
+    var h=0;
+    var scX=1;
+    var scY=1;
+    var opa=1;
+    var rot=0;
+    var b=0;
+    function setWidth(){
+        // 문서내의 pic이라는 요소의 css의 너비를 늘린다
+        w=w+10;
+        document.getElementById("pic").style.width=w+"px";
+    }
+    function setHeight(){
+        h=h+10;
+        document.getElementById("pic").style.height=h+"px";
+    }
+    function setScaleX(){
+        scX=scX+0.5;
+        document.getElementById("pic").style.transform="scaleX(" + scX + ")";
+    }
+    function setScaleY(){
+        scY=scY+0.5;
+        document.getElementById("pic").style.transform="scaleY(" + scY + ")";
+    }
+    function setOpacity(){
+        //문서내의 pic이라는 요소의 css중 opacity를 변경한다
+        opa=opa-0.1;
+        document.getElementById("pic").style.opacity=opa;
+    }
+    function setRotate(){
+        //문서내의 pic이라는 요소의 css중 rotate를 변경한다
+        rot=rot+10;     //10도씩 양수방향으로 돌린다(시계방향)
+        document.getElementById("pic").style.transform="rotate(" + rot + "deg)";
+    }
+    function setBorder(){
+        //문서내의 pic이라는 요소의 css중 border를 변경한다
+        b=b+1;
+        document.getElementById("pic").style.border=b+"px dotted red";
+    }
+</script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="control">
+            <!-- ul이란 unordered list 순서없는 목록 -->
+            <ul>
+                <li>
+            <button onclick="setWidth()">width</button>
+            <button onclick="setHeight()">height</button>
+                </li>
+                <li>
+            <button onclick="setScaleX()">scaleX</button>
+            <button onclick="setScaleY()">scaleY</button>
+                </li>
+                <li>
+            <button onclick="setOpacity()">opacity</button>
+                </li>
+                <li>
+            <button onclick="setRotate()">rotate</button>
+                </li>
+                <li>
+            <button onclick="setBorder()">border</button>
+                </li>
+            </ul>
+        </div>
+        <div id="result">
+            <img src="../images/hero/image1.png" id="pic"/>
+        </div>
+    </div>    
+</body>
+</html>

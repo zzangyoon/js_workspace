@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+    #wrapper{
+        width:800px;
+        height:600px;
+        position:relative;
+        margin:auto;
+    }
+    /*wrapper 자식인 code, content를 부모를 기준으로 배치할 것임*/
+    #code{
+        width:100px;
+        height:100%;
+        background:gray;
+        position:absolute;
+        left:0px;
+        top:0px;
+    }
+    #content{
+        width:700px;
+        height:100%;
+        background:green;
+        position:absolute;
+        left:100px;
+        top:0px;
+    }
+    /*자식요소에 position을 명시하면 반드시 부모에도 position이 명시되어 있어야함*/
+    img{
+        position:absolute;
+        left:0px;
+        top:0px;
+    }
+    #mask{
+        width:700px;
+        height:100%;
+        background:black;
+        opacity:0.8;
+        position:absolute;
+        left:0px;
+        top:0px;
+    }
+</style>
+<script>
+    var status; //on or off를 결정할 변수
+    var flagSwitch=true; //스위치의 상태를 결정할 변수 true/false
+    var op=0.8;   // 1 or 0으로 투명도의 속성을 결정할 변수
+    function turn(){
+        //문서내의 pic요소의 src속성을 변경하자
+        status=(flagSwitch)? "on":"off";
+        document.getElementById("pic").src="../images/light/switch_"+status+".png";
+
+        //문서내의 mask라는 id요소의 투명도도 제어하자
+        op=(flagSwitch)? 0:0.8;
+        document.getElementById("mask").style.opacity=op;    //0켜고, 1끄기
+
+        flagSwitch=!flagSwitch; //논리값 뒤집기
+    }
+</script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="code">
+            <img id="pic" src="../images/light/switch_off.png" onClick="turn()"/>
+        </div>
+        <div id="content">
+            <!-- mask와 img는 content라는 같은 부모를 두고있다
+                    위치를 결정해 주자 > position:absolute -->
+            <img src="../images/light/room.jpg" width="700px" height="600px" />
+            <div id="mask"></div>
+        </div>
+    </div>
+</body>
+</html>

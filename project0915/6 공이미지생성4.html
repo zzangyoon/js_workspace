@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>공이미지 말고 경로를 설정&자동생성</title>
+<script>
+
+var count=0;        //전역변수  :   숫자가 누적될 수 있도록 하기위함
+function createBall(){
+    count++;
+    console.log("count is", count);
+    var ball=document.createElement("img");         // <img/> 작성
+    
+    //변수 n의 값을 텍스트박스로부터 구하자!
+    var n=document.getElementById("txt").value;
+    n=parseInt(n);
+    //주의) parseInt()의 대상이 될 수 있는건 "쌍따옴표"를 벗겨내면 정수가 될 수 있는 문자만 가능
+    //"1", "23"
+
+    //(추가)
+    var path=document.getElementById("path").value;
+
+
+    /* 1. 조건문
+    if(count%n!=0){
+        ball.src="../images/ball1.png";                         // <img src=""/> 작성
+    }else{
+        ball.src="../images/ball2.png";                         // <img src=""/> 작성
+    }
+    */
+
+    //2. 흑백논리를 처리할때는 삼항연산자로도 가능
+    ball.src=(count%n==0)? path:"../images/ball1.png";
+
+
+
+    ball.style.width=100+"px";
+    //body에 부착
+    document.body.appendChild(ball);                    // body에 ball 추가!
+
+}
+
+function auto(){
+    setInterval("createBall()",500);        //  500/1000초 마다
+}
+</script>
+</head>
+<body>
+    <input id="txt" type="text" placeholder="몇번째 마다 공을 생성할지 숫자 입력"/>
+    <!-- 추가 -->
+    <input id="path" type="text" placeholder="사용될 이미지 경로"/>
+    <button onClick="createBall()">공 생성</button>
+    <button onClick="auto()">자동생성</button>
+    <br>
+</body>
+</html>

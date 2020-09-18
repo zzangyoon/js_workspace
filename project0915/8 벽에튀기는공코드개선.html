@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>코드개선ver</title>
+<script>
+/*
+이 예제에서는 body에 직접 태그를 작성하지말자!
+실력향상을위해 순수 자바스크립트로만으로 디자인까지 작성해보자
+*/
+var ball;           
+var x=0;          
+var y=0;           
+var stepX=5;    
+var stepY=4;    
+var wrapper;
+
+
+function init(){
+    //버튼 생성(수동, 자동)
+    createButton();
+
+    //div 생성
+    wrapper=document.createElement("div");  
+    wrapper.style.width=600+"px";
+    wrapper.style.height=600+"px";
+    wrapper.style.background="green";
+    wrapper.style.margin="auto";
+    wrapper.style.position="relative";                     
+    document.body.appendChild(wrapper);            
+
+    //공 추가하기
+    ball=document.createElement("img");               
+    ball.src="../images/ball2.png";                      
+    ball.style.width=50+"px";
+    ball.style.height=50+"px";
+    ball.style.position="absolute";                          
+    ball.style.left=100+"px";
+    ball.style.top=50+"px";
+    wrapper.appendChild(ball);                               
+
+}
+
+function createButton(){
+    //동적으로 버튼을 생성하고, click이벤트 마저도 프로그래밍적으로 처리해보자
+    var bt1=document.createElement("button");
+    var bt2=document.createElement("button");     
+
+    //버튼에 click 이벤트 추가하기
+    bt1.addEventListener("click", function(){
+        move();
+    });  
+
+    bt2.addEventListener("click", function(){
+        setInterval("move(), 10"); // 10/1000분
+    });  
+
+    bt1.innerText="수동";     
+    bt2.innerText="자동";      
+    document.body.appendChild(bt1);
+    document.body.appendChild(bt2);
+
+}
+    
+//공의 좌표를 증감시켜 움직임 효과를 내본다
+function move(){
+  
+    x = x+stepX;    
+    y = y+stepY;    
+
+    ball.style.left=x+"px";
+    ball.style.top=y+"px";
+
+    //공이 좌측벽이나 오른쪽벽에 닿으면
+    if(x >= (parseInt(wrapper.style.width) - parseInt(ball.style.width)) || x<=0 ){
+        ball.style.border="1px solid orange";
+        stepX = -stepX;     //부호반대로 전환
+    }
+
+    //공이 바닥이나 천장에 닿으면
+    if(y >= (parseInt(wrapper.style.height) - parseInt(ball.style.height)) || y<=0 ){
+        stepY = -stepY;
+    }
+
+}
+</script>
+</head>
+<body onLoad="init()">
+</body>
+</html>
