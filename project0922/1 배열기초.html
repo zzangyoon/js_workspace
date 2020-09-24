@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<script>
+/*
+// 좋아하는 과일명을 10개정도 메모리에 올려보자
+var x="멜론";
+var y="수박";
+var a1="딸기";
+var a2="귤";
+var p1="포도"
+var p2="감"
+var w1="바나나";
+var w2="자두";
+var t1="복숭아";
+var t2="사과";
+
+// 메모리에 올려진 데이터를 출력도 해보자
+document.write(x);
+document.write(y);
+document.write(a1);
+document.write(a2);
+document.write(p1);
+document.write(p2);
+document.write(w1);
+document.write(w2);
+document.write(t1);
+document.write(t2);
+*/
+
+/*
+우리의 현실에서도 물체, 물건을 순서대로 나열해 놓은 것을 배열이라 한다
+배열화 시켜놓으면, 특정 물체를 가리키기 위한 이름을 줄 필요가 없고
+순서가 있다보니 일괄처리가 가능하다
+따라서 현실에서의 이 좋은 개념을 컴퓨터분야에서 사용 안할리가 없다
+전산분야에서도 배열의 개념을 도입한 문법을 지원하며 똑같이 배열이라 한다 
+*/
+
+var arr=new Array(10);    //배열선언    [][][][][][][][][][] 10개의 빈공간 생성
+arr[0]="멜론";
+arr[1]="수박";
+arr[2]="딸기";
+arr[3]="귤";
+arr[4]="포도"
+arr[5]="감"
+arr[6]="바나나";
+arr[7]="자두";
+arr[8]="복숭아";
+arr[9]="사과";
+
+// 모든 과일을 출력
+for(var i=0; i<=9; i++){
+document.write(arr[i]);
+}
+
+// 첫번째부터 4번째 과일을 출력
+for(var i=0; i<=3; i++){
+    document.write(arr[i]);
+}
+
+
+// 홀수번째 과일을 출력
+for(var i=0; i<=9; i++){
+    if(i%2!=0){
+        document.write(arr[i]);
+    }
+}
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

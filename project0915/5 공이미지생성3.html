@@ -20,14 +20,14 @@ function createBall(){
 
     /* 1. 조건문
     if(count%n!=0){
-        ball.src="../images/ball1.png";                         // <img src=""/> 작성
+        ball.src="../images/ball/ball1.png";                         // <img src=""/> 작성
     }else{
-        ball.src="../images/ball2.png";                         // <img src=""/> 작성
+        ball.src="../images/ball/ball2.png";                         // <img src=""/> 작성
     }
     */
 
     //2. 흑백논리를 처리할때는 삼항연산자로도 가능
-    ball.src=(count%n==0)? "../images/ball2.png":"../images/ball1.png";
+    ball.src=(count%n==0)? "../images/ball/ball2.png":"../images/ball/ball1.png";
 
 
 

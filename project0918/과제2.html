@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+#wrapper{
+    width:1300px;
+    height:700px;
+    background:palegoldenrod;
+    margin:auto;
+    position:relative;
+}
+</style>
+<script>
+var ball;
+var wrapper;
+let a=0.1;
+var targetX;
+var targetY;
+
+window.addEventListener("load", function(){
+    wrapper=document.getElementById("wrapper");
+    setInterval("move()", 10);
+
+    createBall();
+});
+
+function createBall(){
+    ball=document.createElement("div");
+    ball.style.width=50+"px";
+    ball.style.height=50+"px";
+    ball.style.background="red";
+    ball.style.borderRadius=50+"px";
+
+    ball.style.position="absolute";
+    ball.style.left=100+"px";
+    ball.style.top=130+"px";
+
+    wrapper.appendChild(ball);
+}
+
+function move(){
+    ball.style.left= parseInt(ball.style.left)+a*(targetX-parseInt(ball.style.left))+"px";
+    ball.style.top= parseInt(ball.style.top)+a*(targetY-parseInt(ball.style.top))+"px";
+
+    targetX=document.getElementById("tx").value;
+    targetY=document.getElementById("ty").value;
+
+}
+
+
+
+</script>
+</head>
+<body>
+    <div id="wrapper">
+        <input id="tx" type="text" placeholder="이동할 x좌표"/>
+        <input id="ty" type="text" placeholder="이동할 y좌표"/>
+        <button onclick="getPos()">실행</button>
+    </div>
+</body>
+</html>

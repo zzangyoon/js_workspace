@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+#wrapper{
+    width:1300px;
+    height:600px;
+    background:palegoldenrod;
+    margin:auto;
+    position:relative;
+}
+</style>
+<script>
+var wrapper;
+var ball;
+let a=0.1;
+var targetX;
+var targetY;
+var tx;
+var ty;
+var resultx;
+var resulty;
+
+window.addEventListener("load", function(){
+    wrapper = document.getElementById("wrapper");
+    
+    setInterval("move()", 10);
+
+    createBall();
+});
+
+
+function createBall(){
+    ball=document.createElement("div");
+    ball.style.width=50+"px";
+    ball.style.height=50+"px";
+    ball.style.background="red";
+    ball.style.borderRadius=50+"px";
+
+    ball.style.position="absolute";
+    ball.style.left=100+"px";
+    ball.style.top=130+"px";
+
+    wrapper.appendChild(ball);
+}
+
+
+function getPos(){
+    tx=document.getElementById("tx");
+    ty=document.getElementById("ty");
+    
+    tx.value=resultx;
+    ty.value=resulty;
+
+
+}
+
+function move(){
+    ball.style.left=parseInt(ball.style.left)+a*(targetX-parseInt(ball.style.left))+"px";
+    ball.style.top=parseInt(ball.style.top)+a*(targetY-parseInt(ball.style.top))+"px";
+
+    targetX=resultx;
+    targetY=resulty;
+}
+
+
+</script>
+</head>
+<body>
+    <div id="wrapper">
+        <input type="text" id="tx" placeholder="이동할 x좌표"/>
+        <input type="text" id="ty" placeholder="이동할 y좌표"/>
+        <button onclick="getPos()">실행</button>
+    </div>
+</body>
+</html>

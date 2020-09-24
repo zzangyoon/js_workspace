@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+#wrapper{
+    width:1200px;
+    height:799px;
+    margin:auto;
+    position:relative;
+}
+#wrapper img{
+    width:1200px;
+    height:799px;
+}
+</style>
+<script src="../js/lib.js"></script>
+<script>
+var wrapper;
+var bg;
+var sx=1;
+var sy=1;
+var light;
+let a=0.1;
+var targetX=0;
+var targetY=0;
+var count=0;
+
+window.addEventListener("load", function(){
+    wrapper=document.getElementById("wrapper");
+    bg=document.getElementById("bg");
+
+    setInterval("moveBg()", 10);
+    setInterval("move()", 20);
+
+    createLight();
+});
+
+function moveBg(){
+    sx+=0.0002;
+    sy+=0.0002;
+    bg.style.transform="scale("+sx+", "+sy+")";
+}
+
+function createLight(){
+    light=document.createElement("div");
+    light.style.width=30+"px";
+    light.style.height=30+"px";
+    light.style.background="yellow";
+    light.style.position="absolute";
+    light.style.left=100+"px";
+    light.style.top=150+"px";
+    light.style.borderRadius=50+"px";
+    light.style.opacity=0.4;
+    wrapper.appendChild(light);
+}
+
+function move(){
+    light.style.left= parseInt(light.style.left)+a*(targetX-parseInt(light.style.left))+"px";
+    light.style.top= parseInt(light.style.top)+a*(targetY-parseInt(light.style.top))+"px";
+
+    count++;
+    if(count%300==0){
+        targetX=getRandom(800);
+        targetY=getRandom(550);
+    }
+}
+
+
+</script>
+</head>
+<body>
+    <div id="wrapper">
+        <img id="bg" src="../images/bandi/bg.jpg"/>
+    </div>
+</body>
+</html>

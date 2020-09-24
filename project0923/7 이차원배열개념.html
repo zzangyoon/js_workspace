@@ -1,0 +1,26 @@
+<!--이차원 배열은 표이고, 표는 데이터베이스이다-->
+<script>
+var fruit=["apple", "banana", "grape", "orange"];
+var car=["bmw", "audi", "benz", "kia"];
+
+var box=[];
+//var box=new Array(); 위와 동일   
+
+box.push(fruit);    //기존에 1차원이었던 box에 또 다른 배열 추가
+box.push(car);     //기존에 1차원이었던 box에 또 다른 배열 추가
+
+for(var i=0; i<box.length; i++){
+    for(var a=0; a<box[i].length; a++){
+        document.write(box[i][a]);
+    }
+        document.write("<br/>");
+    
+}
+
+
+
+/*
+
+*/
+
+</script>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+#wrapper{
+    width:600px;
+    height:600px;
+    margin:auto;
+    background:palegoldenrod;
+    position:relative;
+}
+#mask{
+    width:200px;
+    height: 200px;
+    background:pink;
+    
+}
+#pics{
+    width:600px;
+    height: 600px;
+    background:blue;
+}
+</style>
+<script>
+var pics;
+var mask;
+let a=0.1;
+var targetX=0;
+var targetY=0;
+
+window.addEventListener("load", function(){
+    init();
+    setInterval("moveLeft()", 50);
+    setInterval("moveUp()", 50);
+    setInterval("moveRight()", 50);
+    setInterval("moveDown()", 50);
+});
+
+function init(){
+    mask = document.getElementById("mask");
+    mask.style.position="absolute";
+    mask.style.left=200+"px";
+    mask.style.top=200+"px";
+
+    pics = document.getElementById("pics");
+    pics.style.position="absolute";
+    pics.style.left=0+"px";
+    pics.style.top=0+"px";
+
+    for(var i=1; i<=9; i++){  
+        var img = document.createElement("img");
+        img.src="../images/travel/"+i+".jpg";
+        img.style.width=200+"px";
+        img.style.height=200+"px";
+
+        pics.appendChild(img);
+    }
+
+    addEventListener("keydown", function(){
+        joystick();
+
+    });
+}
+
+
+function joystick(){
+    switch(event.keyCode){
+            case 37 : moveLeft(); targetX=200; break;
+            case 38 : moveUp();targetY=-200; break;
+            case 39 : moveRight();targetX=-200;break;
+            case 40 : moveDown(); targetY=200; break;
+        }
+}
+
+function moveLeft(){
+    pics.style.left=parseFloat(pics.style.left)+a*(targetX-parseFloat(pics.style.left))+"px";
+}
+function moveUp(){
+    pics.style.top=parseFloat(pics.style.top)+a*(targetY-parseFloat(pics.style.top))+"px";
+}
+function moveRight(){
+    pics.style.left=parseFloat(pics.style.left)+a*(targetX-parseFloat(pics.style.left))+"px";
+}
+function moveDown(){
+    pics.style.top=parseFloat(pics.style.top)+a*(targetY-parseFloat(pics.style.top))+"px";
+}
+
+</script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="mask">
+            <div id="pics"></div>
+        </div>
+    </div>
+</body>
+</html>

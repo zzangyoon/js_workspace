@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+</head>
+<script src="../js/lib.js"></script>
+<script>
+var n;
+var result;
+var lunch;
+
+function init(){
+    lunch=new Array();
+    lunch[0]="부대찌개";
+    lunch[1]="칼국수";
+    lunch[2]="쌀국수";
+    lunch[3]="짜장면";
+    lunch[4]="된장찌개";
+    lunch[5]="김치찌개";
+    lunch[6]="햄버거";
+    lunch[7]="돈까스";
+    lunch[8]="만두";
+    lunch[9]="떡라면";
+   
+}
+
+function menu(){
+    n=getRandom(10);
+    result = document.getElementById("result");
+    
+        result.innerText=lunch[n];
+    
+
+}
+
+
+window.addEventListener("load", function(){
+    init();
+});
+
+</script>
+<body>
+    <button onclick="menu()">메뉴결정</button>
+    <h1 id="result"></h1>
+</body>
+</html>
