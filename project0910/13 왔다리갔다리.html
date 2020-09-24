@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+#box{
+    width:100px;
+    height:100px;
+    background:cornflowerblue;
+    position:absolute;
+    left:0px;
+    top:200px;
+}
+</style>
+<script>
+    var x=0;
+    var lim;
+    var y=0;
+    function move(){
+        //문서내의 box라는 요소의 스타일 포지션의 left값 변경
+        x+=10;
+        y=800-x;
+        lim=((x<=400)&&(x>=0))? x : y;
+        document.getElementById("box").style.left=lim+"px";
+        //정보를 출력하면서 개발하기 위해 텍스트박스 출력
+        document.getElementById("info").value=lim;
+        // 400px에 도달하면 다시 왼쪽으로, 0에 도달하면 다시 오른쪽으로
+    }
+</script>
+</head>
+<body>
+    <button onClick="move()">움직이기</button>
+    <input type="text" id="info"/>
+
+    <div id="box"></div>
+</body>
+</html>

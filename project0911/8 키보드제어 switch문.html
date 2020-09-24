@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+    #wrapper{
+        background-image:url(https://mir-s3-cdn-cf.behance.net/project_modules/fs/c1772259824647.5a309e5d41f01.jpg);
+        background-size:1024px 768px;
+        /*배경의 위치*/
+        background-position:0px 0px;
+        width:1024px;
+        height: 768px;
+        margin:auto;
+        position:relative;  
+        overflow:hidden;    
+    }
+    #bird{
+        width:100px;
+        height:130px;
+        
+        position:absolute;
+        left:100px;
+        top:50px;
+    }
+</style>
+<script>
+    var x=100;               
+    var y=50;
+    var bg=0;       //배경의 위치값을 누적할 변수
+                         //누적이 가능하려면 언제나 전역변수로!
+    function joystick(){
+       console.log("당신이 누른 키보드의 1:1 대응하는 아스키 코드값은 ", event.keyCode);
+        //37 left, 38 up, 39 right, 40down
+        switch(event.keyCode){
+            case 37 : moveLeft();break;
+            case 38 : moveUp();break;
+            case 39 : moveRight();break;
+            case 40 : moveDown();break;
+            //default:alert("조작불가");
+        }
+    }
+
+    function moveRight(){
+        x+=10;
+        document.getElementById("bird").style.left=x+"px";
+    }
+    function moveLeft(){
+        x-=10;
+        document.getElementById("bird").style.left=x+"px";
+    }
+    function moveUp(){
+        y-=10;
+        document.getElementById("bird").style.top=y+"px";
+    }
+    function moveDown(){
+        y+=10;
+        document.getElementById("bird").style.top=y+"px";
+    }
+
+    // 배경을 제어하자
+    function moveBg(){
+        //문서내의 wrapper의 백그라운드 포지션 변경
+        bg--;
+        document.getElementById("wrapper").style.backgroundPosition=bg+"px 0px";
+    }
+    
+    function auto(){
+        setInterval("moveBg()", 10);
+    }
+
+</script>
+</head>
+<!-- onKeyDown : 키보드를 누르면... -->
+<body onKeyDown="joystick()">
+    <audio controls>
+        <source src="../sound/bgm.mp3" type="audio/mpeg"/>
+    </audio>
+    <button onClick="moveBg()">배경테스트 수동</button>
+    <button onClick="auto()">배경테스트 자동</button>
+    <div id="wrapper">
+        <img id="bird" src="https://vignette.wikia.nocookie.net/p__/images/e/e2/Red_bird.png/revision/latest/top-crop/width/360/height/450?cb=20150530184407&path-prefix=protagonist"/>
+    </div>
+</body>
+</html>
