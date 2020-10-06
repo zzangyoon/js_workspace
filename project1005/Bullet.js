@@ -23,6 +23,25 @@ class Bullet{
     tick(){
         //총알의 물리량 변화
         this.y+=this.velY;
+
+        //총알이 한걸음, 한걸음 진행할때마다 배열에 존재하는 모든~ 적군을 대상으로
+        //충돌했는지 여부를 판단하자
+        for(var i=0; i<enemyArray.length; i++){
+            var result=collisionCheck(this.img, enemyArray[i].img);     //collisionCheck(나, 적군);
+            if(result){
+                //alert("충돌");
+                //너 죽고(적군배열에서 요소 삭제 splice(index, 갯수), 화면에서도 삭제 removeChild)
+                var img = enemyArray[i].img;
+                wrapper.removeChild(img);
+                enemyArray.splice(0,1);
+
+                //나 죽자(총알배열에서 요소 삭제 splice(index, 갯수), 화면에서도 삭제 removeChild
+                wrapper.removeChild(this.img);
+                var index = bulletArray.indexOf(this);      //현재 총알의 인스턴스가 배열의 몇번째에 존재하는지 : indexOf
+                bulletArray.splice(index,1);    
+
+            }
+        }
     }
     render(){
         //변화된 물리량을 화면에 표시한다(그래픽 처리)

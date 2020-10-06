@@ -39,8 +39,8 @@ function getZeroDate(n){
 
 /*-----------------------------------------------
 아래의 함수는, 두 물체간 충돌여부를 판단해주는 함수이다.
-box1 : 판단 대상 요소1 ex) div 
-box2 : 판단 대상 요소2 ex) div
+box1 : 판단 대상 요소1 ex) div, img, span...
+box2 : 판단 대상 요소2 ex) div, img, span...
 -----------------------------------------------*/
 function collisionCheck(box1, box2) {
     //두물체간 충돌 여부 판단 
