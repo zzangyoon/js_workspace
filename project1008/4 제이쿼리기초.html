@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+/*스타일 시트에서, 스타일의 적용이 될 주체를 가리켜 선택자(selector)라 한다*/
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+//jquery는 개발자가 직접 작성했어야할 자바스크립트 코드를 아주 단순화시켜놓은 라이브러리이다
+//따라서 우리가 기존에 작성했던 코드량에 비해 규모가 상당히 단축된다
+
+//load되면.. addEventListener("load", function) 단축형
+$(document).ready(function(){
+    //alert("로드완료");
+    
+    //순수한 js 코드로 작성시
+    /*
+    var box1 = document.getElementById("box1");
+    box1.style.background="red";
+    box1.style.width=100+"px";
+    box1.style.height=100+"px";
+    */
+
+    //jquery로 작성시
+    //JQuery는 CSS의 선택자 규칙을 따른다.. 따라서 CSS에서 사용했던 #id, .클래스, 태그, 등등이 모두 적용된다
+    /*
+    $("#box1").css("background","blue");
+    $("#box1").css("width","100px");
+    $("#box1").css("height","100px");
+    */
+    $("#box1").css({
+        "background":"green",
+        "width":"100px",
+        "height":"100px"
+    }).css("border","5px solid red");   //css().css();   chaining..
+
+});
+
+
+</script>
+</head>
+<body>
+<div id="box1"></div>
+</body>
+</html>
